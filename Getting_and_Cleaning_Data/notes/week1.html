@@ -1,0 +1,2086 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>Week1 Notes</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<h1>Week1 Notes</h1>
+
+<pre><code class="r">
+
+oldwd = getwd()
+
+setwd(&quot;/mnt/hgfs/WorkSpaces/data_science/Getting_and_Cleaning_Data/notes&quot;)
+
+</code></pre>
+
+<h2>down.file example</h2>
+
+<pre><code class="r">fileUrl &lt;- &quot;https://data.baltimorecity.gov/api/views/dz54-2aru/rows.csv?accessType=DOWNLOAD&quot;
+
+
+download.file(fileUrl, destfile = &quot;./data/cameras.csv&quot;, method = &quot;curl&quot;)
+
+list.files(&quot;./data&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;cameras.csv&quot;  &quot;cameras.xlsx&quot;
+</code></pre>
+
+<pre><code class="r">
+
+
+dateDownloaded &lt;- date()
+dateDownloaded
+</code></pre>
+
+<pre><code>## [1] &quot;Tue May 20 23:45:01 2014&quot;
+</code></pre>
+
+<pre><code class="r">
+</code></pre>
+
+<h2>Read local file</h2>
+
+<pre><code class="r">cameraData &lt;- read.table(&quot;./data/cameras.csv&quot;, sep = &quot;,&quot;, header = TRUE)
+head(cameraData)
+</code></pre>
+
+<pre><code>##                          address direction      street  crossStreet
+## 1       S CATON AVE &amp; BENSON AVE       N/B   Caton Ave   Benson Ave
+## 2       S CATON AVE &amp; BENSON AVE       S/B   Caton Ave   Benson Ave
+## 3 WILKENS AVE &amp; PINE HEIGHTS AVE       E/B Wilkens Ave Pine Heights
+## 4        THE ALAMEDA &amp; E 33RD ST       S/B The Alameda      33rd St
+## 5        E 33RD ST &amp; THE ALAMEDA       E/B      E 33rd  The Alameda
+## 6        ERDMAN AVE &amp; N MACON ST       E/B      Erdman     Macon St
+##                 intersection                      Location.1
+## 1     Caton Ave &amp; Benson Ave (39.2693779962, -76.6688185297)
+## 2     Caton Ave &amp; Benson Ave (39.2693157898, -76.6689698176)
+## 3 Wilkens Ave &amp; Pine Heights  (39.2720252302, -76.676960806)
+## 4     The Alameda  &amp; 33rd St (39.3285013141, -76.5953545714)
+## 5      E 33rd  &amp; The Alameda (39.3283410623, -76.5953594625)
+## 6         Erdman  &amp; Macon St (39.3068045671, -76.5593167803)
+</code></pre>
+
+<pre><code class="r">
+cameraData2 &lt;- read.csv(&quot;./data/cameras.csv&quot;)
+head(cameraData2)
+</code></pre>
+
+<pre><code>##                          address direction      street  crossStreet
+## 1       S CATON AVE &amp; BENSON AVE       N/B   Caton Ave   Benson Ave
+## 2       S CATON AVE &amp; BENSON AVE       S/B   Caton Ave   Benson Ave
+## 3 WILKENS AVE &amp; PINE HEIGHTS AVE       E/B Wilkens Ave Pine Heights
+## 4        THE ALAMEDA &amp; E 33RD ST       S/B The Alameda      33rd St
+## 5        E 33RD ST &amp; THE ALAMEDA       E/B      E 33rd  The Alameda
+## 6        ERDMAN AVE &amp; N MACON ST       E/B      Erdman     Macon St
+##                 intersection                      Location.1
+## 1     Caton Ave &amp; Benson Ave (39.2693779962, -76.6688185297)
+## 2     Caton Ave &amp; Benson Ave (39.2693157898, -76.6689698176)
+## 3 Wilkens Ave &amp; Pine Heights  (39.2720252302, -76.676960806)
+## 4     The Alameda  &amp; 33rd St (39.3285013141, -76.5953545714)
+## 5      E 33rd  &amp; The Alameda (39.3283410623, -76.5953594625)
+## 6         Erdman  &amp; Macon St (39.3068045671, -76.5593167803)
+</code></pre>
+
+<h2>Read excel file</h2>
+
+<pre><code class="r">fileUrl2 &lt;- &quot;https://data.baltimorecity.gov/api/views/dz54-2aru/rows.xlsx?accessType=DOWNLOAD&quot;
+
+
+download.file(fileUrl2, destfile = &quot;./data/cameras.xlsx&quot;, method = &quot;curl&quot;)
+
+list.files(&quot;./data&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;cameras.csv&quot;  &quot;cameras.xlsx&quot;
+</code></pre>
+
+<pre><code class="r">
+## install.packages(&#39;xlsx&#39;)
+library(xlsx)
+</code></pre>
+
+<pre><code>## Loading required package: rJava
+## Loading required package: xlsxjars
+</code></pre>
+
+<pre><code class="r">
+cameraData3 &lt;- read.xlsx2(&quot;./data/cameras.xlsx&quot;, sheetIndex = 1, header = TRUE)
+head(cameraData3)
+</code></pre>
+
+<pre><code>##                          address direction      street  crossStreet
+## 1       S CATON AVE &amp; BENSON AVE       N/B   Caton Ave   Benson Ave
+## 2       S CATON AVE &amp; BENSON AVE       S/B   Caton Ave   Benson Ave
+## 3 WILKENS AVE &amp; PINE HEIGHTS AVE       E/B Wilkens Ave Pine Heights
+## 4        THE ALAMEDA &amp; E 33RD ST       S/B The Alameda      33rd St
+## 5        E 33RD ST &amp; THE ALAMEDA       E/B      E 33rd  The Alameda
+## 6        ERDMAN AVE &amp; N MACON ST       E/B      Erdman     Macon St
+##                 intersection                      Location.1
+## 1     Caton Ave &amp; Benson Ave (39.2693779962, -76.6688185297)
+## 2     Caton Ave &amp; Benson Ave (39.2693157898, -76.6689698176)
+## 3 Wilkens Ave &amp; Pine Heights  (39.2720252302, -76.676960806)
+## 4     The Alameda  &amp; 33rd St (39.3285013141, -76.5953545714)
+## 5      E 33rd  &amp; The Alameda (39.3283410623, -76.5953594625)
+## 6         Erdman  &amp; Macon St (39.3068045671, -76.5593167803)
+</code></pre>
+
+<pre><code class="r">
+
+## subset xlsx
+
+</code></pre>
+
+<h2>Read xml</h2>
+
+<pre><code class="r">
+## install.packages(&#39;XML&#39;)
+
+library(XML)
+fileUrl &lt;- &quot;http://www.w3schools.com/xml/simple.xml&quot;
+doc &lt;- xmlTreeParse(fileUrl, useInternal = TRUE)
+doc
+</code></pre>
+
+<pre><code>## &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+## &lt;!-- Edited by XMLSpy --&gt;
+## &lt;breakfast_menu&gt;
+##   &lt;food&gt;
+##     &lt;name&gt;Belgian Waffles&lt;/name&gt;
+##     &lt;price&gt;$5.95&lt;/price&gt;
+##     &lt;description&gt;Two of our famous Belgian Waffles with plenty of real maple syrup&lt;/description&gt;
+##     &lt;calories&gt;650&lt;/calories&gt;
+##   &lt;/food&gt;
+##   &lt;food&gt;
+##     &lt;name&gt;Strawberry Belgian Waffles&lt;/name&gt;
+##     &lt;price&gt;$7.95&lt;/price&gt;
+##     &lt;description&gt;Light Belgian waffles covered with strawberries and whipped cream&lt;/description&gt;
+##     &lt;calories&gt;900&lt;/calories&gt;
+##   &lt;/food&gt;
+##   &lt;food&gt;
+##     &lt;name&gt;Berry-Berry Belgian Waffles&lt;/name&gt;
+##     &lt;price&gt;$8.95&lt;/price&gt;
+##     &lt;description&gt;Light Belgian waffles covered with an assortment of fresh berries and whipped cream&lt;/description&gt;
+##     &lt;calories&gt;900&lt;/calories&gt;
+##   &lt;/food&gt;
+##   &lt;food&gt;
+##     &lt;name&gt;French Toast&lt;/name&gt;
+##     &lt;price&gt;$4.50&lt;/price&gt;
+##     &lt;description&gt;Thick slices made from our homemade sourdough bread&lt;/description&gt;
+##     &lt;calories&gt;600&lt;/calories&gt;
+##   &lt;/food&gt;
+##   &lt;food&gt;
+##     &lt;name&gt;Homestyle Breakfast&lt;/name&gt;
+##     &lt;price&gt;$6.95&lt;/price&gt;
+##     &lt;description&gt;Two eggs, bacon or sausage, toast, and our ever-popular hash browns&lt;/description&gt;
+##     &lt;calories&gt;950&lt;/calories&gt;
+##   &lt;/food&gt;
+## &lt;/breakfast_menu&gt;
+## 
+</code></pre>
+
+<pre><code class="r">rootNode &lt;- xmlRoot(doc)
+rootNode
+</code></pre>
+
+<pre><code>## &lt;breakfast_menu&gt;
+##   &lt;food&gt;
+##     &lt;name&gt;Belgian Waffles&lt;/name&gt;
+##     &lt;price&gt;$5.95&lt;/price&gt;
+##     &lt;description&gt;Two of our famous Belgian Waffles with plenty of real maple syrup&lt;/description&gt;
+##     &lt;calories&gt;650&lt;/calories&gt;
+##   &lt;/food&gt;
+##   &lt;food&gt;
+##     &lt;name&gt;Strawberry Belgian Waffles&lt;/name&gt;
+##     &lt;price&gt;$7.95&lt;/price&gt;
+##     &lt;description&gt;Light Belgian waffles covered with strawberries and whipped cream&lt;/description&gt;
+##     &lt;calories&gt;900&lt;/calories&gt;
+##   &lt;/food&gt;
+##   &lt;food&gt;
+##     &lt;name&gt;Berry-Berry Belgian Waffles&lt;/name&gt;
+##     &lt;price&gt;$8.95&lt;/price&gt;
+##     &lt;description&gt;Light Belgian waffles covered with an assortment of fresh berries and whipped cream&lt;/description&gt;
+##     &lt;calories&gt;900&lt;/calories&gt;
+##   &lt;/food&gt;
+##   &lt;food&gt;
+##     &lt;name&gt;French Toast&lt;/name&gt;
+##     &lt;price&gt;$4.50&lt;/price&gt;
+##     &lt;description&gt;Thick slices made from our homemade sourdough bread&lt;/description&gt;
+##     &lt;calories&gt;600&lt;/calories&gt;
+##   &lt;/food&gt;
+##   &lt;food&gt;
+##     &lt;name&gt;Homestyle Breakfast&lt;/name&gt;
+##     &lt;price&gt;$6.95&lt;/price&gt;
+##     &lt;description&gt;Two eggs, bacon or sausage, toast, and our ever-popular hash browns&lt;/description&gt;
+##     &lt;calories&gt;950&lt;/calories&gt;
+##   &lt;/food&gt;
+## &lt;/breakfast_menu&gt;
+</code></pre>
+
+<pre><code class="r">xmlName(rootNode)
+</code></pre>
+
+<pre><code>## [1] &quot;breakfast_menu&quot;
+</code></pre>
+
+<pre><code class="r">names(rootNode)
+</code></pre>
+
+<pre><code>##   food   food   food   food   food 
+## &quot;food&quot; &quot;food&quot; &quot;food&quot; &quot;food&quot; &quot;food&quot;
+</code></pre>
+
+<pre><code class="r">rootNode[[1]]
+</code></pre>
+
+<pre><code>## &lt;food&gt;
+##   &lt;name&gt;Belgian Waffles&lt;/name&gt;
+##   &lt;price&gt;$5.95&lt;/price&gt;
+##   &lt;description&gt;Two of our famous Belgian Waffles with plenty of real maple syrup&lt;/description&gt;
+##   &lt;calories&gt;650&lt;/calories&gt;
+## &lt;/food&gt;
+</code></pre>
+
+<pre><code class="r">rootNode[[1]][[3]]
+</code></pre>
+
+<pre><code>## &lt;description&gt;Two of our famous Belgian Waffles with plenty of real maple syrup&lt;/description&gt;
+</code></pre>
+
+<pre><code class="r">xmlSApply(rootNode, xmlValue)
+</code></pre>
+
+<pre><code>##                                                                                                                     food 
+##                               &quot;Belgian Waffles$5.95Two of our famous Belgian Waffles with plenty of real maple syrup650&quot; 
+##                                                                                                                     food 
+##                    &quot;Strawberry Belgian Waffles$7.95Light Belgian waffles covered with strawberries and whipped cream900&quot; 
+##                                                                                                                     food 
+## &quot;Berry-Berry Belgian Waffles$8.95Light Belgian waffles covered with an assortment of fresh berries and whipped cream900&quot; 
+##                                                                                                                     food 
+##                                                &quot;French Toast$4.50Thick slices made from our homemade sourdough bread600&quot; 
+##                                                                                                                     food 
+##                         &quot;Homestyle Breakfast$6.95Two eggs, bacon or sausage, toast, and our ever-popular hash browns950&quot;
+</code></pre>
+
+<pre><code class="r">xpathSApply(rootNode, &quot;//name&quot;, xmlValue)
+</code></pre>
+
+<pre><code>## [1] &quot;Belgian Waffles&quot;             &quot;Strawberry Belgian Waffles&quot; 
+## [3] &quot;Berry-Berry Belgian Waffles&quot; &quot;French Toast&quot;               
+## [5] &quot;Homestyle Breakfast&quot;
+</code></pre>
+
+<pre><code class="r">xpathSApply(rootNode, &quot;//price&quot;, xmlValue)
+</code></pre>
+
+<pre><code>## [1] &quot;$5.95&quot; &quot;$7.95&quot; &quot;$8.95&quot; &quot;$4.50&quot; &quot;$6.95&quot;
+</code></pre>
+
+<pre><code class="r">xpathSApply(rootNode, &quot;//description&quot;, xmlValue)
+</code></pre>
+
+<pre><code>## [1] &quot;Two of our famous Belgian Waffles with plenty of real maple syrup&quot;                  
+## [2] &quot;Light Belgian waffles covered with strawberries and whipped cream&quot;                  
+## [3] &quot;Light Belgian waffles covered with an assortment of fresh berries and whipped cream&quot;
+## [4] &quot;Thick slices made from our homemade sourdough bread&quot;                                
+## [5] &quot;Two eggs, bacon or sausage, toast, and our ever-popular hash browns&quot;
+</code></pre>
+
+<pre><code class="r">xpathSApply(rootNode, &quot;//calories&quot;, xmlValue)
+</code></pre>
+
+<pre><code>## [1] &quot;650&quot; &quot;900&quot; &quot;900&quot; &quot;600&quot; &quot;950&quot;
+</code></pre>
+
+<pre><code class="r">
+
+
+## Reading
+fileUrl &lt;- &quot;http://espn.go.com/nfl/team/_/name/bal/baltimore-ravens&quot;
+doc &lt;- htmlTreeParse(fileUrl, useInternal = TRUE)
+scores &lt;- xpathSApply(doc, &quot;//li[@class=&#39;score&#39;]&quot;, xmlValue)
+teams &lt;- xpathSApply(doc, &quot;//li[@class=&#39;team-name&#39;]&quot;, xmlValue)
+scores
+</code></pre>
+
+<pre><code>## list()
+</code></pre>
+
+<pre><code class="r">teams
+</code></pre>
+
+<pre><code>##  [1] &quot;San Francisco&quot; &quot;Dallas&quot;        &quot;Washington&quot;    &quot;New Orleans&quot;  
+##  [5] &quot;Cincinnati&quot;    &quot;Pittsburgh&quot;    &quot;Cleveland&quot;     &quot;Carolina&quot;     
+##  [9] &quot;Indianapolis&quot;  &quot;Tampa Bay&quot;     &quot;Atlanta&quot;       &quot;Cincinnati&quot;   
+## [13] &quot;Pittsburgh&quot;    &quot;Tennessee&quot;     &quot;New Orleans&quot;   &quot;San Diego&quot;    
+## [17] &quot;Miami&quot;         &quot;Jacksonville&quot;  &quot;Houston&quot;       &quot;Cleveland&quot;
+</code></pre>
+
+<pre><code class="r">
+</code></pre>
+
+<h2>Reading JSON</h2>
+
+<pre><code class="r">
+## install.packages(&#39;jsonlite&#39;)
+library(jsonlite)
+jsonData &lt;- fromJSON(&quot;https://api.github.com/users/jtleek/repos&quot;)
+names(jsonData)
+</code></pre>
+
+<pre><code>##  [1] &quot;id&quot;                &quot;name&quot;              &quot;full_name&quot;        
+##  [4] &quot;owner&quot;             &quot;private&quot;           &quot;html_url&quot;         
+##  [7] &quot;description&quot;       &quot;fork&quot;              &quot;url&quot;              
+## [10] &quot;forks_url&quot;         &quot;keys_url&quot;          &quot;collaborators_url&quot;
+## [13] &quot;teams_url&quot;         &quot;hooks_url&quot;         &quot;issue_events_url&quot; 
+## [16] &quot;events_url&quot;        &quot;assignees_url&quot;     &quot;branches_url&quot;     
+## [19] &quot;tags_url&quot;          &quot;blobs_url&quot;         &quot;git_tags_url&quot;     
+## [22] &quot;git_refs_url&quot;      &quot;trees_url&quot;         &quot;statuses_url&quot;     
+## [25] &quot;languages_url&quot;     &quot;stargazers_url&quot;    &quot;contributors_url&quot; 
+## [28] &quot;subscribers_url&quot;   &quot;subscription_url&quot;  &quot;commits_url&quot;      
+## [31] &quot;git_commits_url&quot;   &quot;comments_url&quot;      &quot;issue_comment_url&quot;
+## [34] &quot;contents_url&quot;      &quot;compare_url&quot;       &quot;merges_url&quot;       
+## [37] &quot;archive_url&quot;       &quot;downloads_url&quot;     &quot;issues_url&quot;       
+## [40] &quot;pulls_url&quot;         &quot;milestones_url&quot;    &quot;notifications_url&quot;
+## [43] &quot;labels_url&quot;        &quot;releases_url&quot;      &quot;created_at&quot;       
+## [46] &quot;updated_at&quot;        &quot;pushed_at&quot;         &quot;git_url&quot;          
+## [49] &quot;ssh_url&quot;           &quot;clone_url&quot;         &quot;svn_url&quot;          
+## [52] &quot;homepage&quot;          &quot;size&quot;              &quot;stargazers_count&quot; 
+## [55] &quot;watchers_count&quot;    &quot;language&quot;          &quot;has_issues&quot;       
+## [58] &quot;has_downloads&quot;     &quot;has_wiki&quot;          &quot;forks_count&quot;      
+## [61] &quot;mirror_url&quot;        &quot;open_issues_count&quot; &quot;forks&quot;            
+## [64] &quot;open_issues&quot;       &quot;watchers&quot;          &quot;default_branch&quot;
+</code></pre>
+
+<pre><code class="r">names(jsonData$owner)
+</code></pre>
+
+<pre><code>##  [1] &quot;login&quot;               &quot;id&quot;                  &quot;avatar_url&quot;         
+##  [4] &quot;gravatar_id&quot;         &quot;url&quot;                 &quot;html_url&quot;           
+##  [7] &quot;followers_url&quot;       &quot;following_url&quot;       &quot;gists_url&quot;          
+## [10] &quot;starred_url&quot;         &quot;subscriptions_url&quot;   &quot;organizations_url&quot;  
+## [13] &quot;repos_url&quot;           &quot;events_url&quot;          &quot;received_events_url&quot;
+## [16] &quot;type&quot;                &quot;site_admin&quot;
+</code></pre>
+
+<pre><code class="r">jsonData$owner$login
+</code></pre>
+
+<pre><code>##  [1] &quot;jtleek&quot; &quot;jtleek&quot; &quot;jtleek&quot; &quot;jtleek&quot; &quot;jtleek&quot; &quot;jtleek&quot; &quot;jtleek&quot;
+##  [8] &quot;jtleek&quot; &quot;jtleek&quot; &quot;jtleek&quot; &quot;jtleek&quot; &quot;jtleek&quot; &quot;jtleek&quot; &quot;jtleek&quot;
+## [15] &quot;jtleek&quot; &quot;jtleek&quot; &quot;jtleek&quot; &quot;jtleek&quot; &quot;jtleek&quot; &quot;jtleek&quot; &quot;jtleek&quot;
+## [22] &quot;jtleek&quot; &quot;jtleek&quot; &quot;jtleek&quot; &quot;jtleek&quot; &quot;jtleek&quot; &quot;jtleek&quot; &quot;jtleek&quot;
+## [29] &quot;jtleek&quot; &quot;jtleek&quot;
+</code></pre>
+
+<pre><code class="r">
+## iris
+myjson &lt;- toJSON(iris, pretty = TRUE)
+cat(myjson)
+</code></pre>
+
+<pre><code>## [
+##  {
+##      &quot;Sepal.Length&quot; : 5.1,
+##      &quot;Sepal.Width&quot; : 3.5,
+##      &quot;Petal.Length&quot; : 1.4,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 4.9,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 1.4,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 4.7,
+##      &quot;Sepal.Width&quot; : 3.2,
+##      &quot;Petal.Length&quot; : 1.3,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 4.6,
+##      &quot;Sepal.Width&quot; : 3.1,
+##      &quot;Petal.Length&quot; : 1.5,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5,
+##      &quot;Sepal.Width&quot; : 3.6,
+##      &quot;Petal.Length&quot; : 1.4,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.4,
+##      &quot;Sepal.Width&quot; : 3.9,
+##      &quot;Petal.Length&quot; : 1.7,
+##      &quot;Petal.Width&quot; : 0.4,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 4.6,
+##      &quot;Sepal.Width&quot; : 3.4,
+##      &quot;Petal.Length&quot; : 1.4,
+##      &quot;Petal.Width&quot; : 0.3,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5,
+##      &quot;Sepal.Width&quot; : 3.4,
+##      &quot;Petal.Length&quot; : 1.5,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 4.4,
+##      &quot;Sepal.Width&quot; : 2.9,
+##      &quot;Petal.Length&quot; : 1.4,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 4.9,
+##      &quot;Sepal.Width&quot; : 3.1,
+##      &quot;Petal.Length&quot; : 1.5,
+##      &quot;Petal.Width&quot; : 0.1,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.4,
+##      &quot;Sepal.Width&quot; : 3.7,
+##      &quot;Petal.Length&quot; : 1.5,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 4.8,
+##      &quot;Sepal.Width&quot; : 3.4,
+##      &quot;Petal.Length&quot; : 1.6,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 4.8,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 1.4,
+##      &quot;Petal.Width&quot; : 0.1,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 4.3,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 1.1,
+##      &quot;Petal.Width&quot; : 0.1,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.8,
+##      &quot;Sepal.Width&quot; : 4,
+##      &quot;Petal.Length&quot; : 1.2,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.7,
+##      &quot;Sepal.Width&quot; : 4.4,
+##      &quot;Petal.Length&quot; : 1.5,
+##      &quot;Petal.Width&quot; : 0.4,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.4,
+##      &quot;Sepal.Width&quot; : 3.9,
+##      &quot;Petal.Length&quot; : 1.3,
+##      &quot;Petal.Width&quot; : 0.4,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.1,
+##      &quot;Sepal.Width&quot; : 3.5,
+##      &quot;Petal.Length&quot; : 1.4,
+##      &quot;Petal.Width&quot; : 0.3,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.7,
+##      &quot;Sepal.Width&quot; : 3.8,
+##      &quot;Petal.Length&quot; : 1.7,
+##      &quot;Petal.Width&quot; : 0.3,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.1,
+##      &quot;Sepal.Width&quot; : 3.8,
+##      &quot;Petal.Length&quot; : 1.5,
+##      &quot;Petal.Width&quot; : 0.3,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.4,
+##      &quot;Sepal.Width&quot; : 3.4,
+##      &quot;Petal.Length&quot; : 1.7,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.1,
+##      &quot;Sepal.Width&quot; : 3.7,
+##      &quot;Petal.Length&quot; : 1.5,
+##      &quot;Petal.Width&quot; : 0.4,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 4.6,
+##      &quot;Sepal.Width&quot; : 3.6,
+##      &quot;Petal.Length&quot; : 1,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.1,
+##      &quot;Sepal.Width&quot; : 3.3,
+##      &quot;Petal.Length&quot; : 1.7,
+##      &quot;Petal.Width&quot; : 0.5,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 4.8,
+##      &quot;Sepal.Width&quot; : 3.4,
+##      &quot;Petal.Length&quot; : 1.9,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 1.6,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5,
+##      &quot;Sepal.Width&quot; : 3.4,
+##      &quot;Petal.Length&quot; : 1.6,
+##      &quot;Petal.Width&quot; : 0.4,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.2,
+##      &quot;Sepal.Width&quot; : 3.5,
+##      &quot;Petal.Length&quot; : 1.5,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.2,
+##      &quot;Sepal.Width&quot; : 3.4,
+##      &quot;Petal.Length&quot; : 1.4,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 4.7,
+##      &quot;Sepal.Width&quot; : 3.2,
+##      &quot;Petal.Length&quot; : 1.6,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 4.8,
+##      &quot;Sepal.Width&quot; : 3.1,
+##      &quot;Petal.Length&quot; : 1.6,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.4,
+##      &quot;Sepal.Width&quot; : 3.4,
+##      &quot;Petal.Length&quot; : 1.5,
+##      &quot;Petal.Width&quot; : 0.4,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.2,
+##      &quot;Sepal.Width&quot; : 4.1,
+##      &quot;Petal.Length&quot; : 1.5,
+##      &quot;Petal.Width&quot; : 0.1,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.5,
+##      &quot;Sepal.Width&quot; : 4.2,
+##      &quot;Petal.Length&quot; : 1.4,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 4.9,
+##      &quot;Sepal.Width&quot; : 3.1,
+##      &quot;Petal.Length&quot; : 1.5,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5,
+##      &quot;Sepal.Width&quot; : 3.2,
+##      &quot;Petal.Length&quot; : 1.2,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.5,
+##      &quot;Sepal.Width&quot; : 3.5,
+##      &quot;Petal.Length&quot; : 1.3,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 4.9,
+##      &quot;Sepal.Width&quot; : 3.6,
+##      &quot;Petal.Length&quot; : 1.4,
+##      &quot;Petal.Width&quot; : 0.1,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 4.4,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 1.3,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.1,
+##      &quot;Sepal.Width&quot; : 3.4,
+##      &quot;Petal.Length&quot; : 1.5,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5,
+##      &quot;Sepal.Width&quot; : 3.5,
+##      &quot;Petal.Length&quot; : 1.3,
+##      &quot;Petal.Width&quot; : 0.3,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 4.5,
+##      &quot;Sepal.Width&quot; : 2.3,
+##      &quot;Petal.Length&quot; : 1.3,
+##      &quot;Petal.Width&quot; : 0.3,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 4.4,
+##      &quot;Sepal.Width&quot; : 3.2,
+##      &quot;Petal.Length&quot; : 1.3,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5,
+##      &quot;Sepal.Width&quot; : 3.5,
+##      &quot;Petal.Length&quot; : 1.6,
+##      &quot;Petal.Width&quot; : 0.6,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.1,
+##      &quot;Sepal.Width&quot; : 3.8,
+##      &quot;Petal.Length&quot; : 1.9,
+##      &quot;Petal.Width&quot; : 0.4,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 4.8,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 1.4,
+##      &quot;Petal.Width&quot; : 0.3,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.1,
+##      &quot;Sepal.Width&quot; : 3.8,
+##      &quot;Petal.Length&quot; : 1.6,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 4.6,
+##      &quot;Sepal.Width&quot; : 3.2,
+##      &quot;Petal.Length&quot; : 1.4,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.3,
+##      &quot;Sepal.Width&quot; : 3.7,
+##      &quot;Petal.Length&quot; : 1.5,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5,
+##      &quot;Sepal.Width&quot; : 3.3,
+##      &quot;Petal.Length&quot; : 1.4,
+##      &quot;Petal.Width&quot; : 0.2,
+##      &quot;Species&quot; : &quot;setosa&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 7,
+##      &quot;Sepal.Width&quot; : 3.2,
+##      &quot;Petal.Length&quot; : 4.7,
+##      &quot;Petal.Width&quot; : 1.4,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.4,
+##      &quot;Sepal.Width&quot; : 3.2,
+##      &quot;Petal.Length&quot; : 4.5,
+##      &quot;Petal.Width&quot; : 1.5,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.9,
+##      &quot;Sepal.Width&quot; : 3.1,
+##      &quot;Petal.Length&quot; : 4.9,
+##      &quot;Petal.Width&quot; : 1.5,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.5,
+##      &quot;Sepal.Width&quot; : 2.3,
+##      &quot;Petal.Length&quot; : 4,
+##      &quot;Petal.Width&quot; : 1.3,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.5,
+##      &quot;Sepal.Width&quot; : 2.8,
+##      &quot;Petal.Length&quot; : 4.6,
+##      &quot;Petal.Width&quot; : 1.5,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.7,
+##      &quot;Sepal.Width&quot; : 2.8,
+##      &quot;Petal.Length&quot; : 4.5,
+##      &quot;Petal.Width&quot; : 1.3,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.3,
+##      &quot;Sepal.Width&quot; : 3.3,
+##      &quot;Petal.Length&quot; : 4.7,
+##      &quot;Petal.Width&quot; : 1.6,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 4.9,
+##      &quot;Sepal.Width&quot; : 2.4,
+##      &quot;Petal.Length&quot; : 3.3,
+##      &quot;Petal.Width&quot; : 1,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.6,
+##      &quot;Sepal.Width&quot; : 2.9,
+##      &quot;Petal.Length&quot; : 4.6,
+##      &quot;Petal.Width&quot; : 1.3,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.2,
+##      &quot;Sepal.Width&quot; : 2.7,
+##      &quot;Petal.Length&quot; : 3.9,
+##      &quot;Petal.Width&quot; : 1.4,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5,
+##      &quot;Sepal.Width&quot; : 2,
+##      &quot;Petal.Length&quot; : 3.5,
+##      &quot;Petal.Width&quot; : 1,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.9,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 4.2,
+##      &quot;Petal.Width&quot; : 1.5,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6,
+##      &quot;Sepal.Width&quot; : 2.2,
+##      &quot;Petal.Length&quot; : 4,
+##      &quot;Petal.Width&quot; : 1,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.1,
+##      &quot;Sepal.Width&quot; : 2.9,
+##      &quot;Petal.Length&quot; : 4.7,
+##      &quot;Petal.Width&quot; : 1.4,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.6,
+##      &quot;Sepal.Width&quot; : 2.9,
+##      &quot;Petal.Length&quot; : 3.6,
+##      &quot;Petal.Width&quot; : 1.3,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.7,
+##      &quot;Sepal.Width&quot; : 3.1,
+##      &quot;Petal.Length&quot; : 4.4,
+##      &quot;Petal.Width&quot; : 1.4,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.6,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 4.5,
+##      &quot;Petal.Width&quot; : 1.5,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.8,
+##      &quot;Sepal.Width&quot; : 2.7,
+##      &quot;Petal.Length&quot; : 4.1,
+##      &quot;Petal.Width&quot; : 1,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.2,
+##      &quot;Sepal.Width&quot; : 2.2,
+##      &quot;Petal.Length&quot; : 4.5,
+##      &quot;Petal.Width&quot; : 1.5,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.6,
+##      &quot;Sepal.Width&quot; : 2.5,
+##      &quot;Petal.Length&quot; : 3.9,
+##      &quot;Petal.Width&quot; : 1.1,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.9,
+##      &quot;Sepal.Width&quot; : 3.2,
+##      &quot;Petal.Length&quot; : 4.8,
+##      &quot;Petal.Width&quot; : 1.8,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.1,
+##      &quot;Sepal.Width&quot; : 2.8,
+##      &quot;Petal.Length&quot; : 4,
+##      &quot;Petal.Width&quot; : 1.3,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.3,
+##      &quot;Sepal.Width&quot; : 2.5,
+##      &quot;Petal.Length&quot; : 4.9,
+##      &quot;Petal.Width&quot; : 1.5,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.1,
+##      &quot;Sepal.Width&quot; : 2.8,
+##      &quot;Petal.Length&quot; : 4.7,
+##      &quot;Petal.Width&quot; : 1.2,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.4,
+##      &quot;Sepal.Width&quot; : 2.9,
+##      &quot;Petal.Length&quot; : 4.3,
+##      &quot;Petal.Width&quot; : 1.3,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.6,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 4.4,
+##      &quot;Petal.Width&quot; : 1.4,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.8,
+##      &quot;Sepal.Width&quot; : 2.8,
+##      &quot;Petal.Length&quot; : 4.8,
+##      &quot;Petal.Width&quot; : 1.4,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.7,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 5,
+##      &quot;Petal.Width&quot; : 1.7,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6,
+##      &quot;Sepal.Width&quot; : 2.9,
+##      &quot;Petal.Length&quot; : 4.5,
+##      &quot;Petal.Width&quot; : 1.5,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.7,
+##      &quot;Sepal.Width&quot; : 2.6,
+##      &quot;Petal.Length&quot; : 3.5,
+##      &quot;Petal.Width&quot; : 1,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.5,
+##      &quot;Sepal.Width&quot; : 2.4,
+##      &quot;Petal.Length&quot; : 3.8,
+##      &quot;Petal.Width&quot; : 1.1,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.5,
+##      &quot;Sepal.Width&quot; : 2.4,
+##      &quot;Petal.Length&quot; : 3.7,
+##      &quot;Petal.Width&quot; : 1,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.8,
+##      &quot;Sepal.Width&quot; : 2.7,
+##      &quot;Petal.Length&quot; : 3.9,
+##      &quot;Petal.Width&quot; : 1.2,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6,
+##      &quot;Sepal.Width&quot; : 2.7,
+##      &quot;Petal.Length&quot; : 5.1,
+##      &quot;Petal.Width&quot; : 1.6,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.4,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 4.5,
+##      &quot;Petal.Width&quot; : 1.5,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6,
+##      &quot;Sepal.Width&quot; : 3.4,
+##      &quot;Petal.Length&quot; : 4.5,
+##      &quot;Petal.Width&quot; : 1.6,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.7,
+##      &quot;Sepal.Width&quot; : 3.1,
+##      &quot;Petal.Length&quot; : 4.7,
+##      &quot;Petal.Width&quot; : 1.5,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.3,
+##      &quot;Sepal.Width&quot; : 2.3,
+##      &quot;Petal.Length&quot; : 4.4,
+##      &quot;Petal.Width&quot; : 1.3,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.6,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 4.1,
+##      &quot;Petal.Width&quot; : 1.3,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.5,
+##      &quot;Sepal.Width&quot; : 2.5,
+##      &quot;Petal.Length&quot; : 4,
+##      &quot;Petal.Width&quot; : 1.3,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.5,
+##      &quot;Sepal.Width&quot; : 2.6,
+##      &quot;Petal.Length&quot; : 4.4,
+##      &quot;Petal.Width&quot; : 1.2,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.1,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 4.6,
+##      &quot;Petal.Width&quot; : 1.4,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.8,
+##      &quot;Sepal.Width&quot; : 2.6,
+##      &quot;Petal.Length&quot; : 4,
+##      &quot;Petal.Width&quot; : 1.2,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5,
+##      &quot;Sepal.Width&quot; : 2.3,
+##      &quot;Petal.Length&quot; : 3.3,
+##      &quot;Petal.Width&quot; : 1,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.6,
+##      &quot;Sepal.Width&quot; : 2.7,
+##      &quot;Petal.Length&quot; : 4.2,
+##      &quot;Petal.Width&quot; : 1.3,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.7,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 4.2,
+##      &quot;Petal.Width&quot; : 1.2,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.7,
+##      &quot;Sepal.Width&quot; : 2.9,
+##      &quot;Petal.Length&quot; : 4.2,
+##      &quot;Petal.Width&quot; : 1.3,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.2,
+##      &quot;Sepal.Width&quot; : 2.9,
+##      &quot;Petal.Length&quot; : 4.3,
+##      &quot;Petal.Width&quot; : 1.3,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.1,
+##      &quot;Sepal.Width&quot; : 2.5,
+##      &quot;Petal.Length&quot; : 3,
+##      &quot;Petal.Width&quot; : 1.1,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.7,
+##      &quot;Sepal.Width&quot; : 2.8,
+##      &quot;Petal.Length&quot; : 4.1,
+##      &quot;Petal.Width&quot; : 1.3,
+##      &quot;Species&quot; : &quot;versicolor&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.3,
+##      &quot;Sepal.Width&quot; : 3.3,
+##      &quot;Petal.Length&quot; : 6,
+##      &quot;Petal.Width&quot; : 2.5,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.8,
+##      &quot;Sepal.Width&quot; : 2.7,
+##      &quot;Petal.Length&quot; : 5.1,
+##      &quot;Petal.Width&quot; : 1.9,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 7.1,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 5.9,
+##      &quot;Petal.Width&quot; : 2.1,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.3,
+##      &quot;Sepal.Width&quot; : 2.9,
+##      &quot;Petal.Length&quot; : 5.6,
+##      &quot;Petal.Width&quot; : 1.8,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.5,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 5.8,
+##      &quot;Petal.Width&quot; : 2.2,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 7.6,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 6.6,
+##      &quot;Petal.Width&quot; : 2.1,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 4.9,
+##      &quot;Sepal.Width&quot; : 2.5,
+##      &quot;Petal.Length&quot; : 4.5,
+##      &quot;Petal.Width&quot; : 1.7,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 7.3,
+##      &quot;Sepal.Width&quot; : 2.9,
+##      &quot;Petal.Length&quot; : 6.3,
+##      &quot;Petal.Width&quot; : 1.8,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.7,
+##      &quot;Sepal.Width&quot; : 2.5,
+##      &quot;Petal.Length&quot; : 5.8,
+##      &quot;Petal.Width&quot; : 1.8,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 7.2,
+##      &quot;Sepal.Width&quot; : 3.6,
+##      &quot;Petal.Length&quot; : 6.1,
+##      &quot;Petal.Width&quot; : 2.5,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.5,
+##      &quot;Sepal.Width&quot; : 3.2,
+##      &quot;Petal.Length&quot; : 5.1,
+##      &quot;Petal.Width&quot; : 2,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.4,
+##      &quot;Sepal.Width&quot; : 2.7,
+##      &quot;Petal.Length&quot; : 5.3,
+##      &quot;Petal.Width&quot; : 1.9,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.8,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 5.5,
+##      &quot;Petal.Width&quot; : 2.1,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.7,
+##      &quot;Sepal.Width&quot; : 2.5,
+##      &quot;Petal.Length&quot; : 5,
+##      &quot;Petal.Width&quot; : 2,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.8,
+##      &quot;Sepal.Width&quot; : 2.8,
+##      &quot;Petal.Length&quot; : 5.1,
+##      &quot;Petal.Width&quot; : 2.4,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.4,
+##      &quot;Sepal.Width&quot; : 3.2,
+##      &quot;Petal.Length&quot; : 5.3,
+##      &quot;Petal.Width&quot; : 2.3,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.5,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 5.5,
+##      &quot;Petal.Width&quot; : 1.8,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 7.7,
+##      &quot;Sepal.Width&quot; : 3.8,
+##      &quot;Petal.Length&quot; : 6.7,
+##      &quot;Petal.Width&quot; : 2.2,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 7.7,
+##      &quot;Sepal.Width&quot; : 2.6,
+##      &quot;Petal.Length&quot; : 6.9,
+##      &quot;Petal.Width&quot; : 2.3,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6,
+##      &quot;Sepal.Width&quot; : 2.2,
+##      &quot;Petal.Length&quot; : 5,
+##      &quot;Petal.Width&quot; : 1.5,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.9,
+##      &quot;Sepal.Width&quot; : 3.2,
+##      &quot;Petal.Length&quot; : 5.7,
+##      &quot;Petal.Width&quot; : 2.3,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.6,
+##      &quot;Sepal.Width&quot; : 2.8,
+##      &quot;Petal.Length&quot; : 4.9,
+##      &quot;Petal.Width&quot; : 2,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 7.7,
+##      &quot;Sepal.Width&quot; : 2.8,
+##      &quot;Petal.Length&quot; : 6.7,
+##      &quot;Petal.Width&quot; : 2,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.3,
+##      &quot;Sepal.Width&quot; : 2.7,
+##      &quot;Petal.Length&quot; : 4.9,
+##      &quot;Petal.Width&quot; : 1.8,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.7,
+##      &quot;Sepal.Width&quot; : 3.3,
+##      &quot;Petal.Length&quot; : 5.7,
+##      &quot;Petal.Width&quot; : 2.1,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 7.2,
+##      &quot;Sepal.Width&quot; : 3.2,
+##      &quot;Petal.Length&quot; : 6,
+##      &quot;Petal.Width&quot; : 1.8,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.2,
+##      &quot;Sepal.Width&quot; : 2.8,
+##      &quot;Petal.Length&quot; : 4.8,
+##      &quot;Petal.Width&quot; : 1.8,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.1,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 4.9,
+##      &quot;Petal.Width&quot; : 1.8,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.4,
+##      &quot;Sepal.Width&quot; : 2.8,
+##      &quot;Petal.Length&quot; : 5.6,
+##      &quot;Petal.Width&quot; : 2.1,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 7.2,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 5.8,
+##      &quot;Petal.Width&quot; : 1.6,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 7.4,
+##      &quot;Sepal.Width&quot; : 2.8,
+##      &quot;Petal.Length&quot; : 6.1,
+##      &quot;Petal.Width&quot; : 1.9,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 7.9,
+##      &quot;Sepal.Width&quot; : 3.8,
+##      &quot;Petal.Length&quot; : 6.4,
+##      &quot;Petal.Width&quot; : 2,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.4,
+##      &quot;Sepal.Width&quot; : 2.8,
+##      &quot;Petal.Length&quot; : 5.6,
+##      &quot;Petal.Width&quot; : 2.2,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.3,
+##      &quot;Sepal.Width&quot; : 2.8,
+##      &quot;Petal.Length&quot; : 5.1,
+##      &quot;Petal.Width&quot; : 1.5,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.1,
+##      &quot;Sepal.Width&quot; : 2.6,
+##      &quot;Petal.Length&quot; : 5.6,
+##      &quot;Petal.Width&quot; : 1.4,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 7.7,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 6.1,
+##      &quot;Petal.Width&quot; : 2.3,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.3,
+##      &quot;Sepal.Width&quot; : 3.4,
+##      &quot;Petal.Length&quot; : 5.6,
+##      &quot;Petal.Width&quot; : 2.4,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.4,
+##      &quot;Sepal.Width&quot; : 3.1,
+##      &quot;Petal.Length&quot; : 5.5,
+##      &quot;Petal.Width&quot; : 1.8,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 4.8,
+##      &quot;Petal.Width&quot; : 1.8,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.9,
+##      &quot;Sepal.Width&quot; : 3.1,
+##      &quot;Petal.Length&quot; : 5.4,
+##      &quot;Petal.Width&quot; : 2.1,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.7,
+##      &quot;Sepal.Width&quot; : 3.1,
+##      &quot;Petal.Length&quot; : 5.6,
+##      &quot;Petal.Width&quot; : 2.4,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.9,
+##      &quot;Sepal.Width&quot; : 3.1,
+##      &quot;Petal.Length&quot; : 5.1,
+##      &quot;Petal.Width&quot; : 2.3,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.8,
+##      &quot;Sepal.Width&quot; : 2.7,
+##      &quot;Petal.Length&quot; : 5.1,
+##      &quot;Petal.Width&quot; : 1.9,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.8,
+##      &quot;Sepal.Width&quot; : 3.2,
+##      &quot;Petal.Length&quot; : 5.9,
+##      &quot;Petal.Width&quot; : 2.3,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.7,
+##      &quot;Sepal.Width&quot; : 3.3,
+##      &quot;Petal.Length&quot; : 5.7,
+##      &quot;Petal.Width&quot; : 2.5,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.7,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 5.2,
+##      &quot;Petal.Width&quot; : 2.3,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.3,
+##      &quot;Sepal.Width&quot; : 2.5,
+##      &quot;Petal.Length&quot; : 5,
+##      &quot;Petal.Width&quot; : 1.9,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.5,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 5.2,
+##      &quot;Petal.Width&quot; : 2,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 6.2,
+##      &quot;Sepal.Width&quot; : 3.4,
+##      &quot;Petal.Length&quot; : 5.4,
+##      &quot;Petal.Width&quot; : 2.3,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  },
+##  {
+##      &quot;Sepal.Length&quot; : 5.9,
+##      &quot;Sepal.Width&quot; : 3,
+##      &quot;Petal.Length&quot; : 5.1,
+##      &quot;Petal.Width&quot; : 1.8,
+##      &quot;Species&quot; : &quot;virginica&quot;
+##  }
+## ]
+</code></pre>
+
+<pre><code class="r">iris2 &lt;- fromJSON(myjson)
+head(iris2)
+</code></pre>
+
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa
+</code></pre>
+
+<h2>Using data.table</h2>
+
+<pre><code class="r">
+## install.packages(&#39;data.table&#39;)
+library(data.table)
+DF &lt;- data.frame(x = rnorm(9), y = rep(c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;), each = 3), z = rnorm(9))
+head(DF, 3)
+</code></pre>
+
+<pre><code>##          x y       z
+## 1  0.24441 a  0.4495
+## 2 -0.04576 a -1.2629
+## 3 -0.47290 a  0.3280
+</code></pre>
+
+<pre><code class="r">DT &lt;- data.table(x = rnorm(9), y = rep(c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;), each = 3), z = rnorm(9))
+head(DT, 3)
+</code></pre>
+
+<pre><code>##          x y      z
+## 1: -1.9055 a 0.8051
+## 2: -1.2414 a 0.6753
+## 3:  0.4098 a 1.4035
+</code></pre>
+
+<pre><code class="r">DT[2, ]
+</code></pre>
+
+<pre><code>##         x y      z
+## 1: -1.241 a 0.6753
+</code></pre>
+
+<pre><code class="r">DT[DT$y == &quot;a&quot;, ]
+</code></pre>
+
+<pre><code>##          x y      z
+## 1: -1.9055 a 0.8051
+## 2: -1.2414 a 0.6753
+## 3:  0.4098 a 1.4035
+</code></pre>
+
+<pre><code class="r">DT[c(2, 3)]
+</code></pre>
+
+<pre><code>##          x y      z
+## 1: -1.2414 a 0.6753
+## 2:  0.4098 a 1.4035
+</code></pre>
+
+<pre><code class="r">DT[, c(2, 3)]  # not subsetting the columns
+</code></pre>
+
+<pre><code>## [1] 2 3
+</code></pre>
+
+<pre><code class="r">{
+    x = 1
+    y = 2
+}
+k = {
+    print(10)
+    5
+}  # 10
+</code></pre>
+
+<pre><code>## [1] 10
+</code></pre>
+
+<pre><code class="r">print(k)  # 5
+</code></pre>
+
+<pre><code>## [1] 5
+</code></pre>
+
+<pre><code class="r">tables()
+</code></pre>
+
+<pre><code>##      NAME NROW MB COLS  KEY
+## [1,] DT      9 1  x,y,z    
+## Total: 1MB
+</code></pre>
+
+<pre><code class="r">DT[, list(mean(x), sum(z))]
+</code></pre>
+
+<pre><code>##        V1      V2
+## 1: 0.0513 -0.4199
+</code></pre>
+
+<pre><code class="r">DT[, table(y)]
+</code></pre>
+
+<pre><code>## y
+## a b c 
+## 3 3 3
+</code></pre>
+
+<pre><code class="r">DT[, `:=`(w, z^2)]
+</code></pre>
+
+<pre><code>##          x y        z        w
+## 1: -1.9055 a  0.80505 0.648112
+## 2: -1.2414 a  0.67529 0.456021
+## 3:  0.4098 a  1.40350 1.969821
+## 4:  0.6822 b -1.76135 3.102340
+## 5: -0.1438 b  0.51189 0.262027
+## 6:  0.4609 b -1.42016 2.016843
+## 7: -0.1874 c -0.05003 0.002503
+## 8:  2.0230 c  1.07582 1.157381
+## 9:  0.3639 c -1.65991 2.755285
+</code></pre>
+
+<pre><code class="r">DT
+</code></pre>
+
+<pre><code>##          x y        z        w
+## 1: -1.9055 a  0.80505 0.648112
+## 2: -1.2414 a  0.67529 0.456021
+## 3:  0.4098 a  1.40350 1.969821
+## 4:  0.6822 b -1.76135 3.102340
+## 5: -0.1438 b  0.51189 0.262027
+## 6:  0.4609 b -1.42016 2.016843
+## 7: -0.1874 c -0.05003 0.002503
+## 8:  2.0230 c  1.07582 1.157381
+## 9:  0.3639 c -1.65991 2.755285
+</code></pre>
+
+<pre><code class="r">DT2 &lt;- DT
+DT[, `:=`(y, 2)]
+</code></pre>
+
+<pre><code>## Warning: Coerced &#39;double&#39; RHS to &#39;character&#39; to match the column&#39;s type;
+## may have truncated precision. Either change the target column to &#39;double&#39;
+## first (by creating a new &#39;double&#39; vector length 9 (nrows of entire table)
+## and assign that; i.e. &#39;replace&#39; column), or coerce RHS to &#39;character&#39;
+## (e.g. 1L, NA_[real|integer]_, as.*, etc) to make your intent clear and for
+## speed. Or, set the column type correctly up front when you create the
+## table and stick to it, please.
+</code></pre>
+
+<pre><code>##          x y        z        w
+## 1: -1.9055 2  0.80505 0.648112
+## 2: -1.2414 2  0.67529 0.456021
+## 3:  0.4098 2  1.40350 1.969821
+## 4:  0.6822 2 -1.76135 3.102340
+## 5: -0.1438 2  0.51189 0.262027
+## 6:  0.4609 2 -1.42016 2.016843
+## 7: -0.1874 2 -0.05003 0.002503
+## 8:  2.0230 2  1.07582 1.157381
+## 9:  0.3639 2 -1.65991 2.755285
+</code></pre>
+
+<pre><code class="r">DT
+</code></pre>
+
+<pre><code>##          x y        z        w
+## 1: -1.9055 2  0.80505 0.648112
+## 2: -1.2414 2  0.67529 0.456021
+## 3:  0.4098 2  1.40350 1.969821
+## 4:  0.6822 2 -1.76135 3.102340
+## 5: -0.1438 2  0.51189 0.262027
+## 6:  0.4609 2 -1.42016 2.016843
+## 7: -0.1874 2 -0.05003 0.002503
+## 8:  2.0230 2  1.07582 1.157381
+## 9:  0.3639 2 -1.65991 2.755285
+</code></pre>
+
+<pre><code class="r">DT2  # it is changed as well
+</code></pre>
+
+<pre><code>##          x y        z        w
+## 1: -1.9055 2  0.80505 0.648112
+## 2: -1.2414 2  0.67529 0.456021
+## 3:  0.4098 2  1.40350 1.969821
+## 4:  0.6822 2 -1.76135 3.102340
+## 5: -0.1438 2  0.51189 0.262027
+## 6:  0.4609 2 -1.42016 2.016843
+## 7: -0.1874 2 -0.05003 0.002503
+## 8:  2.0230 2  1.07582 1.157381
+## 9:  0.3639 2 -1.65991 2.755285
+</code></pre>
+
+<pre><code class="r">head(DT, n = 3)
+</code></pre>
+
+<pre><code>##          x y      z      w
+## 1: -1.9055 2 0.8051 0.6481
+## 2: -1.2414 2 0.6753 0.4560
+## 3:  0.4098 2 1.4035 1.9698
+</code></pre>
+
+<pre><code class="r">DT[, `:=`(m, {
+    tmp &lt;- (x + z)
+    log2(tmp + 5)
+})]
+</code></pre>
+
+<pre><code>##          x y        z        w     m
+## 1: -1.9055 2  0.80505 0.648112 1.963
+## 2: -1.2414 2  0.67529 0.456021 2.149
+## 3:  0.4098 2  1.40350 1.969821 2.768
+## 4:  0.6822 2 -1.76135 3.102340 1.971
+## 5: -0.1438 2  0.51189 0.262027 2.424
+## 6:  0.4609 2 -1.42016 2.016843 2.015
+## 7: -0.1874 2 -0.05003 0.002503 2.252
+## 8:  2.0230 2  1.07582 1.157381 3.018
+## 9:  0.3639 2 -1.65991 2.755285 1.889
+</code></pre>
+
+<pre><code class="r">DT
+</code></pre>
+
+<pre><code>##          x y        z        w     m
+## 1: -1.9055 2  0.80505 0.648112 1.963
+## 2: -1.2414 2  0.67529 0.456021 2.149
+## 3:  0.4098 2  1.40350 1.969821 2.768
+## 4:  0.6822 2 -1.76135 3.102340 1.971
+## 5: -0.1438 2  0.51189 0.262027 2.424
+## 6:  0.4609 2 -1.42016 2.016843 2.015
+## 7: -0.1874 2 -0.05003 0.002503 2.252
+## 8:  2.0230 2  1.07582 1.157381 3.018
+## 9:  0.3639 2 -1.65991 2.755285 1.889
+</code></pre>
+
+<pre><code class="r">DT2  # it is changed as well; they point to the same address
+</code></pre>
+
+<pre><code>##          x y        z        w     m
+## 1: -1.9055 2  0.80505 0.648112 1.963
+## 2: -1.2414 2  0.67529 0.456021 2.149
+## 3:  0.4098 2  1.40350 1.969821 2.768
+## 4:  0.6822 2 -1.76135 3.102340 1.971
+## 5: -0.1438 2  0.51189 0.262027 2.424
+## 6:  0.4609 2 -1.42016 2.016843 2.015
+## 7: -0.1874 2 -0.05003 0.002503 2.252
+## 8:  2.0230 2  1.07582 1.157381 3.018
+## 9:  0.3639 2 -1.65991 2.755285 1.889
+</code></pre>
+
+<pre><code class="r">DT[, `:=`(a, x &gt; 0)]
+</code></pre>
+
+<pre><code>##          x y        z        w     m     a
+## 1: -1.9055 2  0.80505 0.648112 1.963 FALSE
+## 2: -1.2414 2  0.67529 0.456021 2.149 FALSE
+## 3:  0.4098 2  1.40350 1.969821 2.768  TRUE
+## 4:  0.6822 2 -1.76135 3.102340 1.971  TRUE
+## 5: -0.1438 2  0.51189 0.262027 2.424 FALSE
+## 6:  0.4609 2 -1.42016 2.016843 2.015  TRUE
+## 7: -0.1874 2 -0.05003 0.002503 2.252 FALSE
+## 8:  2.0230 2  1.07582 1.157381 3.018  TRUE
+## 9:  0.3639 2 -1.65991 2.755285 1.889  TRUE
+</code></pre>
+
+<pre><code class="r">DT
+</code></pre>
+
+<pre><code>##          x y        z        w     m     a
+## 1: -1.9055 2  0.80505 0.648112 1.963 FALSE
+## 2: -1.2414 2  0.67529 0.456021 2.149 FALSE
+## 3:  0.4098 2  1.40350 1.969821 2.768  TRUE
+## 4:  0.6822 2 -1.76135 3.102340 1.971  TRUE
+## 5: -0.1438 2  0.51189 0.262027 2.424 FALSE
+## 6:  0.4609 2 -1.42016 2.016843 2.015  TRUE
+## 7: -0.1874 2 -0.05003 0.002503 2.252 FALSE
+## 8:  2.0230 2  1.07582 1.157381 3.018  TRUE
+## 9:  0.3639 2 -1.65991 2.755285 1.889  TRUE
+</code></pre>
+
+<pre><code class="r">DT[, `:=`(b, mean(x + w)), by = a]
+</code></pre>
+
+<pre><code>##          x y        z        w     m     a       b
+## 1: -1.9055 2  0.80505 0.648112 1.963 FALSE -0.5274
+## 2: -1.2414 2  0.67529 0.456021 2.149 FALSE -0.5274
+## 3:  0.4098 2  1.40350 1.969821 2.768  TRUE  2.9883
+## 4:  0.6822 2 -1.76135 3.102340 1.971  TRUE  2.9883
+## 5: -0.1438 2  0.51189 0.262027 2.424 FALSE -0.5274
+## 6:  0.4609 2 -1.42016 2.016843 2.015  TRUE  2.9883
+## 7: -0.1874 2 -0.05003 0.002503 2.252 FALSE -0.5274
+## 8:  2.0230 2  1.07582 1.157381 3.018  TRUE  2.9883
+## 9:  0.3639 2 -1.65991 2.755285 1.889  TRUE  2.9883
+</code></pre>
+
+<pre><code class="r">DT
+</code></pre>
+
+<pre><code>##          x y        z        w     m     a       b
+## 1: -1.9055 2  0.80505 0.648112 1.963 FALSE -0.5274
+## 2: -1.2414 2  0.67529 0.456021 2.149 FALSE -0.5274
+## 3:  0.4098 2  1.40350 1.969821 2.768  TRUE  2.9883
+## 4:  0.6822 2 -1.76135 3.102340 1.971  TRUE  2.9883
+## 5: -0.1438 2  0.51189 0.262027 2.424 FALSE -0.5274
+## 6:  0.4609 2 -1.42016 2.016843 2.015  TRUE  2.9883
+## 7: -0.1874 2 -0.05003 0.002503 2.252 FALSE -0.5274
+## 8:  2.0230 2  1.07582 1.157381 3.018  TRUE  2.9883
+## 9:  0.3639 2 -1.65991 2.755285 1.889  TRUE  2.9883
+</code></pre>
+
+<pre><code class="r">set.seed(123)
+DT &lt;- data.table(x = sample(letters[1:3], 1e+05, TRUE))
+DT[, .N, by = x]
+</code></pre>
+
+<pre><code>##    x     N
+## 1: a 33387
+## 2: c 33201
+## 3: b 33412
+</code></pre>
+
+<pre><code class="r"># keys
+DT &lt;- data.table(x = rep(c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;), each = 100), y = rnorm(300))
+setkey(DT, x)
+DT[&quot;a&quot;]
+</code></pre>
+
+<pre><code>##      x        y
+##   1: a  0.25959
+##   2: a  0.91751
+##   3: a -0.72232
+##   4: a -0.80828
+##   5: a -0.14135
+##   6: a  2.25701
+##   7: a -2.37955
+##   8: a -0.45425
+##   9: a -0.06007
+##  10: a  0.86090
+##  11: a -1.78466
+##  12: a -0.13074
+##  13: a -0.36984
+##  14: a -0.18066
+##  15: a -1.04973
+##  16: a  0.37832
+##  17: a -1.37079
+##  18: a -0.31612
+##  19: a  0.39435
+##  20: a -1.68988
+##  21: a -1.46234
+##  22: a  2.55838
+##  23: a  0.08789
+##  24: a  1.73141
+##  25: a  1.21513
+##  26: a  0.29954
+##  27: a -0.17246
+##  28: a  1.13250
+##  29: a  0.02320
+##  30: a  1.33587
+##  31: a -1.09879
+##  32: a -0.58176
+##  33: a  0.03892
+##  34: a  1.07315
+##  35: a  1.34970
+##  36: a  1.19528
+##  37: a -0.02218
+##  38: a  0.69849
+##  39: a  0.67241
+##  40: a -0.79165
+##  41: a -0.21791
+##  42: a  0.02307
+##  43: a  0.11539
+##  44: a -0.27708
+##  45: a  0.03688
+##  46: a  0.47520
+##  47: a  1.70749
+##  48: a  1.07601
+##  49: a -1.34571
+##  50: a -1.44025
+##  51: a -0.39393
+##  52: a  0.58106
+##  53: a -0.17079
+##  54: a -0.90585
+##  55: a  0.15621
+##  56: a -0.37323
+##  57: a -0.34587
+##  58: a -0.35829
+##  59: a -0.13307
+##  60: a -0.08960
+##  61: a  0.62793
+##  62: a -1.42883
+##  63: a  0.17255
+##  64: a -0.79115
+##  65: a  1.26204
+##  66: a -0.26941
+##  67: a  0.15698
+##  68: a -0.76060
+##  69: a  1.37060
+##  70: a  0.03758
+##  71: a  0.44949
+##  72: a  2.78869
+##  73: a -0.46849
+##  74: a  1.01261
+##  75: a -0.04374
+##  76: a  1.40670
+##  77: a  0.41993
+##  78: a  0.31009
+##  79: a  1.11905
+##  80: a -1.29814
+##  81: a -1.28248
+##  82: a  1.65943
+##  83: a  0.78375
+##  84: a  0.57771
+##  85: a -0.26725
+##  86: a -0.64569
+##  87: a -0.44953
+##  88: a -0.82620
+##  89: a  1.05504
+##  90: a -0.87927
+##  91: a -1.27713
+##  92: a -0.63412
+##  93: a  0.66470
+##  94: a -0.50958
+##  95: a  0.40736
+##  96: a  1.67775
+##  97: a -1.05206
+##  98: a -0.63691
+##  99: a  0.56539
+## 100: a  0.38016
+##      x        y
+</code></pre>
+
+<pre><code class="r"># use keys to do joins
+DT1 &lt;- data.table(x = c(&quot;a&quot;, &quot;a&quot;, &quot;b&quot;, &quot;dt1&quot;), y = 1:4)
+DT2 &lt;- data.table(x = c(&quot;a&quot;, &quot;b&quot;, &quot;dt2&quot;), z = 5:7)
+setkey(DT1, x)
+setkey(DT2, x)
+merge(DT1, DT2)
+</code></pre>
+
+<pre><code>##    x y z
+## 1: a 1 5
+## 2: a 2 5
+## 3: b 3 6
+</code></pre>
+
+<pre><code class="r"># use keys to fast reading
+big_df &lt;- data.frame(x = rnorm(1e+06), y = rnorm(1e+06))
+file &lt;- tempfile()
+write.table(big_df, file = file, row.names = FALSE, col.names = TRUE, sep = &quot;\t&quot;, 
+    quote = FALSE)
+system.time(fread(file))
+</code></pre>
+
+<pre><code>##    user  system elapsed 
+##   0.552   0.004   0.555
+</code></pre>
+
+<pre><code class="r">system.time(read.table(file, header = TRUE, sep = &quot;\t&quot;))  # so slow
+</code></pre>
+
+<pre><code>##    user  system elapsed 
+##  10.704   2.304  13.016
+</code></pre>
+
+<h2>Back wd</h2>
+
+<pre><code class="r">setwd(oldwd)
+</code></pre>
+
+</body>
+
+</html>
+
