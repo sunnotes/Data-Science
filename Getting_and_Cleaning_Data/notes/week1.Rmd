@@ -1,3 +1,12 @@
+---
+layout: post
+title: "获取和整理数据：第一课"
+description: ""
+category: coursera
+tags: [ data science , R ]
+---
+{% include JB/setup %}
+
 Week1 Notes
 ========================================================
 
